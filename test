@@ -1,0 +1,29 @@
+<div id='main'></div>
+    <script>
+        function reqParam(){
+            this.params = '';
+            this.request = function() {
+                var requestObj = new XMLHttpRequest();
+            
+                requestObj.open('POST', 'controller.php', true);
+                requestObj.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+                
+                requestObj.onreadystatechange = function () {
+                    if(requestObj.readyState == 4 && requestObj.status == 200){
+                        var mainCt = document.getElementById('main');
+                        
+                        document.write('asd');
+                        
+                        this.mainCt.innerHTML = requestObj.responseText;
+                        console.log(requestObj.responseText);
+                    }
+                }
+                
+                requestObj.send(this.params);
+            }
+        }
+        
+        var reqObj = new reqParam();
+        reqObj.params = "func='index'"
+        reqObj.request();
+    </script>
